@@ -13,7 +13,7 @@ const ProductDetails = () => {
     useEffect(() => {
         dispatch(getDetailsProduct(id));
     }, [dispatch, id]);
-    
+
     return (
         <>
             {loading === false ? (
