@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Image1 from "../assets/images/image1.png";
 
 import {
     getFeaturedProducts,
@@ -24,6 +25,27 @@ const Home = () => {
     return (
         <>
             <div>
+                <div className="row header">
+                    <div className="container navbar">
+                        <div className="col-2">
+                            <h1>
+                                Give Your Workout
+                                <br /> A New Style!
+                            </h1>
+                            <p>
+                                Success ins't always about greatness. It's about
+                                consistency. Consistent <br />
+                                hard work gains success. Greatness will come.{" "}
+                            </p>
+                            <Link to="/" className="btn">
+                                Explore Now →
+                            </Link>
+                        </div>
+                        <div className="col-2">
+                            <img src={Image1} alt="banner" />
+                        </div>
+                    </div>
+                </div>
                 {/* ------------- featured categorries ---------------- */}
                 {/* <div className="categories">
                     <div className="small-container">
@@ -52,7 +74,12 @@ const Home = () => {
                                     key={featuredProduct._id}
                                 >
                                     <Link
-                                        to={`/product/${featuredProduct._id}`} style={{height: "255px", width: "100%", display: "inline-block" }}
+                                        to={`/product/${featuredProduct._id}`}
+                                        style={{
+                                            height: "255px",
+                                            width: "100%",
+                                            display: "inline-block",
+                                        }}
                                     >
                                         <img
                                             src={featuredProduct.images[0].url}
@@ -81,21 +108,14 @@ const Home = () => {
                     <div className="row">
                         {latestProducts &&
                             latestProducts.map((latestProduct) => (
-                                <div
-                                    className="col-4"
-                                    key={latestProduct._id}
-                                >
-                                    <Link
-                                        to={`/product/${latestProduct._id}`}
-                                    >
+                                <div className="col-4" key={latestProduct._id}>
+                                    <Link to={`/product/${latestProduct._id}`}>
                                         <img
                                             src={latestProduct.images[0].url}
                                             alt=""
                                         />
                                     </Link>
-                                    <Link
-                                        to={`/product/${latestProduct._id}`}
-                                    >
+                                    <Link to={`/product/${latestProduct._id}`}>
                                         <h4>{latestProduct.name}</h4>
                                     </Link>
 
@@ -109,12 +129,10 @@ const Home = () => {
                                     <p>{latestProduct.price}</p>
                                 </div>
                             ))}
-                        
                     </div>
-                    
                 </div>
                 {/* ------------ offer -------------- */}
-                <div className="offer">
+                {/* <div className="offer">
                     <div className="small-container">
                         <div className="row">
                             <div className="col-2">
@@ -138,9 +156,9 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 {/* ------------ testimonial -------------- */}
-                <div className="testimonial">
+                {/* <div className="testimonial">
                     <div className="small-container">
                         <div className="row">
                             <div className="col-3">
@@ -205,9 +223,9 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 {/* ------------------- brands --------------------- */}
-                <div className="brands">
+                {/* <div className="brands">
                     <div className="small-container">
                         <div className="row">
                             <div className="col-5">
@@ -227,7 +245,7 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </>
     );

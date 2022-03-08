@@ -3,7 +3,7 @@ body {
     /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
         "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
         "Helvetica Neue", "Josefin Sans", sans-serif; */
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     /* -webkit-font-smoothing: antialiased; */
     /* -moz-osx-font-smoothing: grayscale; */
 }
@@ -339,6 +339,11 @@ input:focus {
     flex-basis: 24%;
     cursor: pointer;
 }
+
+.product-img {
+    width: 100%;
+    height: 260px;
+}
 /* -----------------cart item details------------------- - */
 .cart-page {
     margin: 80px auto;
@@ -422,7 +427,7 @@ td:last-child {
     max-width: 300px;
     padding: 0 20px;
     position: absolute;
-    top: 130px;
+    top: 105px;
     transition: transform 1s;
 }
 form input {
@@ -442,7 +447,7 @@ form .btn:focus {
     outline: none;
 }
 #LoginForm {
-    left: -300px;
+    /* left: -300px; */
 }
 #RegForm {
     left: 0;
@@ -456,7 +461,7 @@ form a {
     background: #ff523b;
     height: 3px;
     margin-top: 8px;
-    transform: translateX(100px);
+    /* transform: translateX(100px); */
     transition: transform 1s;
 }
 

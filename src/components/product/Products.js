@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getAllProducts } from "../../actions/productActions.js";
 
 const Products = () => {
@@ -32,9 +32,15 @@ const Products = () => {
                         {allProducts &&
                             allProducts.map((product) => (
                                 <div className="col-4" key={product._id}>
-                                    <Link to={`/product/${product._id}`}>
-                                        <img src={product.images[0].url} alt="" />
-                                    </Link>
+                                    <div className="product-img">
+                                        <Link to={`/product/${product._id}`}>
+                                            <img
+                                                src={product.images[0].url}
+                                                alt=""
+                                            />
+                                        </Link>
+                                    </div>
+
                                     <h4>{product.name}</h4>
                                     <div className="rating">
                                         <i className="fa fa-star" />
@@ -46,8 +52,6 @@ const Products = () => {
                                     <p>{product.price}</p>
                                 </div>
                             ))}
-
-                        
                     </div>
                     <div className="page-btn">
                         <span>1</span>
