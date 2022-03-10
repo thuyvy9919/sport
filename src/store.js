@@ -10,16 +10,29 @@ import {
 
 } from './reducers/productReducers'
 
+import {authReducer} from './reducers/userReducers'
+
 
 
 const reducer = combineReducers({
     featuredProductsReducer,
     latestProductsReducer,
     detailsProductReducer,
-    allProductsReducer
+    allProductsReducer,
+
+    authReducer
 })
+
+//lấy user login tử localstorage 
+const userLoginFromStorage = localStorage.getItem('userLogin') ? JSON.parse(localStorage.getItem('userLogin')) : null
+
+//khởi tạo giá trị, kiểm tra đã có user đăng nhập hay chưa
 const initialState = {
-    
+    authReducer: {
+        isAuthenticated: userLoginFromStorage ? true : false,
+        userLogin: userLoginFromStorage ? userLoginFromStorage.user : null
+
+    }
 }
 
 const middleware = [thunk]

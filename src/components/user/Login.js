@@ -1,14 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../actions/userAction";
+import { useNavigate  } from "react-router-dom";
 
 const Login = () => {
-    
+    let navigate  = useNavigate()
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    useEffect(() => {}, [dispatch]);
+    const { isAuthenticated, error, loading } = useSelector(state => state.authReducer)
+
+    
+
+
+    useEffect(() => {
+
+        if(isAuthenticated) {
+            //Nếu đã có user login thì chuyển về trang chủ
+            navigate('/')
+        }
+        if(error) {
+            alert(error)
+        }
+    }, [dispatch, isAuthenticated, navigate]);
+
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(login(email, password))

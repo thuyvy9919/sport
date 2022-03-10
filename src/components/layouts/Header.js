@@ -1,10 +1,16 @@
 import React from "react";
 import Logo from "../../assets/images/logo.png";
 import Cart from "../../assets/images/cart.png";
-
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
-
+import { logout } from "../../actions/userAction";
 const Header = () => {
+    const dispatch = useDispatch()
+    const { userLogin, isAuthenticated } = useSelector(state => state.authReducer)
+
+    const logoutHandler = () => {
+        dispatch(logout())
+    }
     return (
         <div className="header">
             <div className="container">
@@ -29,7 +35,26 @@ const Header = () => {
                                 <Link to="/">Contact</Link>
                             </li>
                             <li>
-                                <Link to="/login">Account</Link>
+                                <>
+                                    {
+                                        isAuthenticated ? (
+                                            <>
+                                                <span>Hi, </span>
+                                                <span>{userLogin.name}</span>
+                                                <span> | </span>
+                                                <Link to="/" onClick={logoutHandler}>Logout</Link>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Link to="/login">Login</Link>
+                                                <span> | </span>
+                                                <Link to="/register">Register</Link>
+                                            </>
+                                        )
+                                    }
+                                </>
+
+
                             </li>
                         </ul>
                     </nav>
