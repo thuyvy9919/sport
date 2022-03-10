@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getDetailsProduct } from "../../actions/productActions.js";
+import { addToCart } from "../../actions/cartActions.js";
 
 const ProductDetails = () => {
     let { id } = useParams();
@@ -9,10 +10,25 @@ const ProductDetails = () => {
     const { product, loading, error } = useSelector(
         (state) => state.detailsProductReducer
     );
+    const { isAuthenticated, userLogin } = useSelector(
+        (state) => state.authReducer
+    );
 
     useEffect(() => {
         dispatch(getDetailsProduct(id));
     }, [dispatch, id]);
+
+    const addProductToCart = () => {
+        if (isAuthenticated) {
+            const user_id = userLogin._id
+            dispatch(addToCart(user_id, id, 1))
+            console.log('added');
+        } else {
+            console.log('Phai login truoc');
+            
+        }
+    }
+
 
     return (
         <>
@@ -56,7 +72,7 @@ const ProductDetails = () => {
                                 <option>Small</option>
                             </select>
                             <input type="number" defaultValue={1} />
-                            <a href className="btn">
+                            <a href className="btn" onClick={addProductToCart}>
                                 Add To Card
                             </a>
                             <h3>

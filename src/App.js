@@ -6,6 +6,7 @@ import Products from "./components/product/Products.js";
 import ProductDetails from "./components/product/ProductDetails.js";
 import Home from "./components/Home.js";
 import Login from "./components/user/Login.js";
+import Cart from "./components/cart/Cart.js"; 
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                     <Route path="/products" element={<Products />} />
                     <Route path="/product/:id" element={<ProductDetails />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/cart" element={<Cart />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>

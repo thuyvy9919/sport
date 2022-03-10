@@ -58,9 +58,10 @@ const Header = () => {
                             </li>
                         </ul>
                     </nav>
-                    <Link to="/">
+                    <Link to="/cart">
                         <img src={Cart} alt="cart" width="30px" height="30px" />
                     </Link>
+
                     {/* <img
                         src="images/menu.png"
                         className="menu-icon"

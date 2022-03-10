@@ -11,7 +11,7 @@ import {
     ALL_PRODUCTS_REQUEST,
     ALL_PRODUCTS_SUCCESS,
     ALL_PRODUCTS_FAIL,
-} from "../constants/productContants.js";
+} from "../constants/productConstants.js";
 
 export const featuredProductsReducer = (state = {featuredProducts: []}, action) => {
     switch (action.type) {

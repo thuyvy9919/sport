@@ -11,6 +11,7 @@ import {
 } from './reducers/productReducers'
 
 import {authReducer} from './reducers/userReducers'
+import {cartReducer} from './reducers/cartReducers'
 
 
 
@@ -20,11 +21,14 @@ const reducer = combineReducers({
     detailsProductReducer,
     allProductsReducer,
 
-    authReducer
+    authReducer,
+
+    cartReducer
 })
 
 //lấy user login tử localstorage 
 const userLoginFromStorage = localStorage.getItem('userLogin') ? JSON.parse(localStorage.getItem('userLogin')) : null
+const cartItemsFromStorage = userLoginFromStorage && localStorage.getItem(userLoginFromStorage.user._id) ? JSON.parse(localStorage.getItem(userLoginFromStorage.user._id)) : []
 
 //khởi tạo giá trị, kiểm tra đã có user đăng nhập hay chưa
 const initialState = {
@@ -32,6 +36,9 @@ const initialState = {
         isAuthenticated: userLoginFromStorage ? true : false,
         userLogin: userLoginFromStorage ? userLoginFromStorage.user : null
 
+    },
+    cartReducer: {
+        cartItems: cartItemsFromStorage
     }
 }
 
