@@ -18,7 +18,9 @@ code {
     padding: 0;
     box-sizing: border-box;
 }
-
+a{
+    cursor: pointer;
+}
 .navbar {
     display: flex;
     align-items: center;
@@ -78,7 +80,7 @@ p {
     transition: background 0.5s;
 }
 .btn:hover {
-    background: #563434;
+    background: #6d6b6b;
 }
 .header {
     background: radial-gradient(#fff, #ffd6d6);

@@ -20,13 +20,13 @@ const Products = () => {
                 <div className="small-container">
                     <div className="row row-2">
                         <h2>All Products</h2>
-                        <select>
+                        {/* <select>
                             <option>Default Shop</option>
                             <option>Short by price</option>
                             <option>Short by popularity</option>
                             <option>Short by Rating</option>
                             <option>Short by Sale</option>
-                        </select>
+                        </select> */}
                     </div>
                     <div className="row">
                         {allProducts &&
@@ -53,13 +53,13 @@ const Products = () => {
                                 </div>
                             ))}
                     </div>
-                    <div className="page-btn">
+                    {/* <div className="page-btn">
                         <span>1</span>
                         <span>2</span>
                         <span>3</span>
                         <span>4</span>
                         <span>→</span>
-                    </div>
+                    </div> */}
                 </div>
             )}
         </>

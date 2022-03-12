@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getDetailsProduct } from "../../actions/productActions.js";
@@ -14,6 +14,8 @@ const ProductDetails = () => {
         (state) => state.authReducer
     );
 
+    const [qty, setQty] = useState(1)
+
     useEffect(() => {
         dispatch(getDetailsProduct(id));
     }, [dispatch, id]);
@@ -21,11 +23,15 @@ const ProductDetails = () => {
     const addProductToCart = () => {
         if (isAuthenticated) {
             const user_id = userLogin._id
-            dispatch(addToCart(user_id, id, 1))
-            console.log('added');
+
+            if (qty > product.stock) {
+                console.log('Mua it thoi');
+            } else {
+                dispatch(addToCart(user_id, id, qty))
+            }
         } else {
             console.log('Phai login truoc');
-            
+
         }
     }
 
@@ -60,18 +66,20 @@ const ProductDetails = () => {
                             </div>
                         </div>
                         <div className="col-2">
-                            <p>Home / T-Shirt</p>
+                            <p>Home / </p>
                             <h1>{product && product.name}</h1>
                             <h4>{product && product.price}đ</h4>
-                            <select>
+                            <p>Stock: {product.stock}</p>
+                            <p>Sold: {product.sold}</p>
+                            {/* <select>
                                 <option>Select Size</option>
                                 <option>XXL</option>
                                 <option>XL</option>
                                 <option>Large</option>
                                 <option>Medium</option>
                                 <option>Small</option>
-                            </select>
-                            <input type="number" defaultValue={1} />
+                            </select> */}
+                            <input type="number" min="1" value={qty} onChange={(e) => setQty(e.target.value)} />
                             <a href className="btn" onClick={addProductToCart}>
                                 Add To Card
                             </a>
@@ -92,3 +100,4 @@ const ProductDetails = () => {
 };
 
 export default ProductDetails;
+ 

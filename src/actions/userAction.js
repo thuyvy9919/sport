@@ -5,6 +5,8 @@ import {
     LOGOUT_SUCCESS,
     LOGOUT_FAIL
 } from "../constants/userConstants";
+import { CART_IMPORT } from '../constants/cartConstants'
+
 import axios from "axios";
 const url = "https://toryo-sport.herokuapp.com";
 
@@ -29,7 +31,12 @@ export const login = (email, password) => async (dispatch) => {
             type: LOGIN_SUCCESS,
             payload: data.user,
         });
-        
+        //Khi đăng nhập thành công, lấy giỏ hàng của id user đó từ localstorage về để bỏ qua bên reducer
+        dispatch({
+            type: CART_IMPORT,
+            payload: JSON.parse(localStorage.getItem(data.user._id)),
+        });
+
         //Gửi data (khi đăng nhập thành công api trả về thông tin của tài khoản đó) lên localstorage để lưu trữ lâu dài - sử dụng cho nhiều component 
         localStorage.setItem('userLogin', JSON.stringify(data))
 
