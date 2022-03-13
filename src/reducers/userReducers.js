@@ -3,7 +3,8 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT_SUCCESS,
-    LOGOUT_FAIL
+    LOGOUT_FAIL,
+    CLEAR_ERROR
 } from "../constants/userConstants";
 
 export const authReducer = (state = { userLogin: {} }, action) => {
@@ -36,6 +37,10 @@ export const authReducer = (state = { userLogin: {} }, action) => {
                 ...state,
                 error: action.payload
             }
+        case CLEAR_ERROR: return {
+            ...state,
+            error: null
+        }    
         default: return state
     }
 }

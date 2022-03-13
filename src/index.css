@@ -215,6 +215,7 @@ small {
     color: #8a8a8a;
     font-size: 14px;
     padding: 60px 0 20px;
+    margin-top: 50px;
 }
 .footer p {
     color: #8a8a8a;
@@ -268,6 +269,8 @@ ul {
     margin-left: 20px;
     display: none;
 }
+
+
 
 /* ---------------All Products Page------------------- */
 .row-2 {
@@ -516,4 +519,13 @@ form a {
     .cart-info p {
         display: none;
     }
+}
+
+
+.shipping {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.form-header{
+    margin-top: 50px;
 }

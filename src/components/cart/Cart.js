@@ -60,7 +60,7 @@ export default function Cart() {
                                     <tr>
                                         <td></td>
                                         <td>
-                                            <a className="btn" href>Order</a>
+                                            <Link to='/order/shipping' className="btn" href>Order</Link>
                                         </td>
                                     </tr>
                                 </tbody>

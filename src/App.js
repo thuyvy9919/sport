@@ -7,6 +7,12 @@ import ProductDetails from "./components/product/ProductDetails.js";
 import Home from "./components/Home.js";
 import Login from "./components/user/Login.js";
 import Cart from "./components/cart/Cart.js"; 
+import {Shipping} from "./components/cart/Shipping.js"; 
+import {ConfirmOrder} from "./components/cart/ConfirmOrder"; 
+
+
+
+
 
 function App() {
     return (
@@ -19,6 +25,10 @@ function App() {
                     <Route path="/product/:id" element={<ProductDetails />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/cart" element={<Cart />} />
+                    <Route path="/order/shipping" element={<Shipping />} />
+                    <Route path="/order/confirm" element={<ConfirmOrder />} />
+
+
                 </Routes>
                 <Footer />
             </BrowserRouter>
