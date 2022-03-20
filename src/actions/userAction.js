@@ -9,28 +9,24 @@ import { CART_IMPORT } from '../constants/cartConstants'
 
 import axios from "axios";
 const url = "https://toryo-sport.herokuapp.com";
+const urlLocal = 'http://localhost:4000'
 
 export const login = (email, password) => async (dispatch) => {
     try {
         dispatch({ type: LOGIN_REQUEST });
-
         const config = {
-
             headers: {
-                "Content-Type": "application/json",
-            },
-        };
+                'Content-Type': 'application/json'
+            }
+        }
 
-        const { data } = await axios.post(
-            url + "/api/login",
-            { email, password },
-            config
-        );
+        const { data } = await axios.post(urlLocal + '/api/login', { email, password }, config)
 
         dispatch({
             type: LOGIN_SUCCESS,
             payload: data.user,
         });
+
         //Khi đăng nhập thành công, lấy giỏ hàng của id user đó từ localstorage về để bỏ qua bên reducer
         dispatch({
             type: CART_IMPORT,
@@ -51,7 +47,7 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
     try {
 
-        await axios.get( url +'/api/logout')
+        await axios.get(urlLocal + '/api/logout')
 
         dispatch({
             type: LOGOUT_SUCCESS,

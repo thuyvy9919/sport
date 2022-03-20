@@ -37,10 +37,11 @@ export const authReducer = (state = { userLogin: {} }, action) => {
                 ...state,
                 error: action.payload
             }
-        case CLEAR_ERROR: return {
-            ...state,
-            error: null
-        }    
+        case CLEAR_ERROR:
+            return {
+                ...state,
+                error: null
+            }
         default: return state
     }
 }

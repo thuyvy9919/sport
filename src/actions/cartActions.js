@@ -7,11 +7,12 @@ import {
 
 import axios from "axios";
 const url = "https://toryo-sport.herokuapp.com";
+const urlLocal = "http://localhost:4000"
 
 
 export const addToCart = (user_id, id, qty) => async (dispatch, getState) => {
 
-    const { data } = await axios.get(url + `/api/product/${id}`)
+    const { data } = await axios.get(urlLocal + `/api/product/${id}`)
     console.log(data);
     dispatch({
         type: ADD_TO_CART,
@@ -20,6 +21,7 @@ export const addToCart = (user_id, id, qty) => async (dispatch, getState) => {
             name: data.product.name,
             price: data.product.price,
             image: data.product.images[0].url,
+            size : "Free Size",
             qty
         }
     })

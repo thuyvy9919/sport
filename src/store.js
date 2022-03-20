@@ -10,9 +10,9 @@ import {
 
 } from './reducers/productReducers'
 
-import {authReducer} from './reducers/userReducers'
-import {cartReducer} from './reducers/cartReducers'
-
+import { authReducer } from './reducers/userReducers'
+import { cartReducer } from './reducers/cartReducers'
+import { newOrderReducer } from './reducers/orderReducers'
 
 
 const reducer = combineReducers({
@@ -23,7 +23,9 @@ const reducer = combineReducers({
 
     authReducer,
 
-    cartReducer
+    cartReducer,
+
+    newOrderReducer
 })
 
 //lấy user login tử localstorage 
@@ -31,6 +33,9 @@ const userLoginFromStorage = localStorage.getItem('userLogin') ? JSON.parse(loca
 
 //lấy giỏ hàng từ localstorage về tương ứng vs id của user login
 const cartItemsFromStorage = userLoginFromStorage && localStorage.getItem(userLoginFromStorage.user._id) ? JSON.parse(localStorage.getItem(userLoginFromStorage.user._id)) : []
+
+const shippingInfoFromStorage = localStorage.getItem('shippingInfo') ? JSON.parse(localStorage.getItem('shippingInfo')) : {}
+
 
 //khởi tạo giá trị, kiểm tra đã có user đăng nhập hay chưa
 const initialState = {
@@ -40,7 +45,8 @@ const initialState = {
 
     },
     cartReducer: {
-        cartItems: cartItemsFromStorage
+        cartItems: cartItemsFromStorage,
+        shippingInfo: shippingInfoFromStorage
     }
 }
 

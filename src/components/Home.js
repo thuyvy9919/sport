@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Image1 from "../assets/images/image1.png";
@@ -21,7 +21,7 @@ const Home = () => {
         dispatch(getFeaturedProducts());
         dispatch(getLatestProducts());
     }, [dispatch]);
-
+    
     return (
         <>
             <div>

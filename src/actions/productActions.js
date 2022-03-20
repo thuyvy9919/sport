@@ -17,6 +17,7 @@ import {
 import axios from "axios";
 
 const url = "https://toryo-sport.herokuapp.com"
+const urlLocal = "http://localhost:4000"
 
 export const getFeaturedProducts = () => async (dispatch) => {
     try {
@@ -26,7 +27,7 @@ export const getFeaturedProducts = () => async (dispatch) => {
         //         'Content-Type': 'application/json'
         //     }
         // }
-        const {data} = await axios.get(url + '/api/products/featured')
+        const {data} = await axios.get(urlLocal + '/api/products/featured')
 
         dispatch({ 
             type: FEATURED_PRODUCTS_SUCCESS,
@@ -48,7 +49,7 @@ export const getLatestProducts = () => async (dispatch) => {
         //         'Content-Type': 'application/json'
         //     }
         // }
-        const {data} = await axios.get(url + '/api/products/latest')
+        const {data} = await axios.get(urlLocal + '/api/products/latest')
 
         dispatch({ 
             type: LATEST_PRODUCTS_SUCCESS,
@@ -70,7 +71,7 @@ export const getDetailsProduct = (id) => async (dispatch) => {
         //         'Content-Type': 'application/json'
         //     }
         // }
-        const {data} = await axios.get(url + `/api/product/${id}`)
+        const {data} = await axios.get(urlLocal + `/api/product/${id}`)
 
         dispatch({ 
             type: DETAILS_PRODUCT_SUCCESS,
@@ -88,7 +89,7 @@ export const getAllProducts = () => async (dispatch) => {
     try {
         dispatch({ type: ALL_PRODUCTS_REQUEST });
 
-        const {data} = await axios.get(url + '/api/admin/products')
+        const {data} = await axios.get(urlLocal + '/api/admin/products')
 
         dispatch({ 
             type: ALL_PRODUCTS_SUCCESS,
