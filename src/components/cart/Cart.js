@@ -17,7 +17,7 @@ export default function Cart() {
     return (
         <div>
             {
-                isAuthenticated ? (cartItems.length === 0 ? (
+                isAuthenticated ? (cartItems && cartItems.length === 0 ? (
                     <div className="container">
                         <h2>Chua co san pham nao trong gio hang. Mua hang deeeee!</h2>
                     </div>

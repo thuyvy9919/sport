@@ -16,7 +16,6 @@ export const newOrder = (order) => async (dispatch) => {
                
             }
         }
-        console.log(userLogin.token);
 
         const { data } = await axios.post(urlLocal + `/api/order/new`, order, config);
 
